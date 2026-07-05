@@ -1,0 +1,45 @@
+<svg viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Transaction graph generated from dataset">
+<rect width="920" height="520" fill="#f8fafc"/>
+<text x="32" y="42" font-size="24" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Transaction Graph From Provided Dataset</text>
+<text x="32" y="70" font-size="14" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 transactions | 280 fraud (3.50%)</text>
+<g opacity="0.95">
+<line x1="450" y1="260" x2="450.0" y2="95.0" stroke="#2563eb" stroke-width="3" stroke-opacity="0.45"/>
+<circle cx="450.0" cy="95.0" r="48" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="3"/>
+<text x="418.0" y="91.0" font-size="15" font-weight="700" font-family="Arial, sans-serif" fill="#2563eb">Card</text>
+<text x="416.0" y="113.0" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 usable</text>
+<line x1="450" y1="260" x2="615.0" y2="260.0" stroke="#16a34a" stroke-width="3" stroke-opacity="0.45"/>
+<circle cx="615.0" cy="260.0" r="48" fill="#16a34a" fill-opacity="0.12" stroke="#16a34a" stroke-width="3"/>
+<text x="583.0" y="256.0" font-size="15" font-weight="700" font-family="Arial, sans-serif" fill="#16a34a">Device</text>
+<text x="581.0" y="278.0" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">1,066 usable</text>
+<line x1="450" y1="260" x2="450.0" y2="425.0" stroke="#dc2626" stroke-width="3" stroke-opacity="0.45"/>
+<circle cx="450.0" cy="425.0" r="48" fill="#dc2626" fill-opacity="0.12" stroke="#dc2626" stroke-width="3"/>
+<text x="418.0" y="421.0" font-size="15" font-weight="700" font-family="Arial, sans-serif" fill="#dc2626">Email</text>
+<text x="416.0" y="443.0" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">144 usable</text>
+<line x1="450" y1="260" x2="285.0" y2="260.0" stroke="#9333ea" stroke-width="3" stroke-opacity="0.45"/>
+<circle cx="285.0" cy="260.0" r="48" fill="#9333ea" fill-opacity="0.12" stroke="#9333ea" stroke-width="3"/>
+<text x="253.0" y="256.0" font-size="15" font-weight="700" font-family="Arial, sans-serif" fill="#9333ea">Address</text>
+<text x="251.0" y="278.0" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">1,192 usable</text>
+<circle cx="450" cy="260" r="74" fill="#fff7ed" stroke="#f97316" stroke-width="4"/>
+<text x="399" y="252" font-size="17" font-weight="700" font-family="Arial, sans-serif" fill="#9a3412">Transactions</text>
+<text x="407" y="278" font-size="13" font-weight="400" font-family="Arial, sans-serif" fill="#9a3412">8,000 nodes</text>
+<rect x="650" y="118" width="230" height="286" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<text x="668" y="150" font-size="17" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Entity Edges</text>
+<circle cx="674" cy="178" r="7" fill="#2563eb"/>
+<text x="692" y="182" font-size="14" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Card</text>
+<text x="692" y="202" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 tx-entity edges</text>
+<text x="692" y="220" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#64748b">0 high-degree hubs dropped</text>
+<circle cx="674" cy="236" r="7" fill="#16a34a"/>
+<text x="692" y="240" font-size="14" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Device</text>
+<text x="692" y="260" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 tx-entity edges</text>
+<text x="692" y="278" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#64748b">0 high-degree hubs dropped</text>
+<circle cx="674" cy="294" r="7" fill="#dc2626"/>
+<text x="692" y="298" font-size="14" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Email</text>
+<text x="692" y="318" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 tx-entity edges</text>
+<text x="692" y="336" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#64748b">0 high-degree hubs dropped</text>
+<circle cx="674" cy="352" r="7" fill="#9333ea"/>
+<text x="692" y="356" font-size="14" font-weight="700" font-family="Arial, sans-serif" fill="#111827">Address</text>
+<text x="692" y="376" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#475569">8,000 tx-entity edges</text>
+<text x="692" y="394" font-size="12" font-weight="400" font-family="Arial, sans-serif" fill="#64748b">0 high-degree hubs dropped</text>
+</g>
+<text x="32" y="486" font-size="13" font-weight="400" font-family="Arial, sans-serif" fill="#475569">Edges connect transactions that share card, device, email, or address values after high-degree hub filtering.</text>
+</svg>

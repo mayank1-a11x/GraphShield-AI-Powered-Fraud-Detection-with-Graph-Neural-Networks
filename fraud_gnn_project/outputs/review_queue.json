@@ -1,0 +1,180 @@
+{
+  "summary": {
+    "total_fraud": 280,
+    "fraud_caught": 276,
+    "fraud_missed": 4,
+    "sentence": "Out of 280 fraudulent transactions in the provided dataset, the model correctly caught 276 of them."
+  },
+  "cards": {
+    "fraud_caught": 276,
+    "fraud_missed": 4,
+    "transactions_reviewed": 8000
+  },
+  "confidence": {
+    "high": 7957,
+    "medium": 27,
+    "low": 16
+  },
+  "top_suspicious": [
+    {
+      "transaction_id": "2991526",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 235.46,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2987001",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 154.97,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2989021",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 163.69,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2988563",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 164.45,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2993479",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 213.24,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2993828",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 154.57,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2991158",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 266.2,
+      "reason": "Unusual transaction amount; High-risk device pattern"
+    },
+    {
+      "transaction_id": "2991252",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 309.02,
+      "reason": "Unusual transaction amount; High-risk device pattern"
+    },
+    {
+      "transaction_id": "2992436",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 177.68,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2994124",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 160.97,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2994979",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 189.94,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2988151",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 150.82,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2988867",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 245.56,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2991959",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 234.61,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2994399",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 206.11,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2994069",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 185.77,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2988485",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 272.54,
+      "reason": "Unusual transaction amount; High-risk device pattern"
+    },
+    {
+      "transaction_id": "2990766",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 204.82,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2989675",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 188.48,
+      "reason": "High-risk device pattern; Shared email pattern"
+    },
+    {
+      "transaction_id": "2993946",
+      "actual_fraud": "Yes",
+      "model_prediction": "Fraud",
+      "confidence": 100.0,
+      "amount": 355.39,
+      "reason": "Unusual transaction amount; High-risk device pattern"
+    }
+  ]
+}

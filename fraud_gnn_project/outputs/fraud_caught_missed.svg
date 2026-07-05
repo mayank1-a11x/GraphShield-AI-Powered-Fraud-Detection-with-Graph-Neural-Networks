@@ -1,0 +1,10 @@
+<svg viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fraud caught versus fraud missed">
+  <rect width="720" height="420" fill="#ffffff"/>
+  <line x1="90" y1="320" x2="630" y2="320" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="165" y="70" width="135" height="250" rx="7" fill="#16a34a"/>
+  <rect x="420" y="316" width="135" height="4" rx="7" fill="#dc2626"/>
+  <text x="232.5" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#14532d">276</text>
+  <text x="487.5" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#7f1d1d">4</text>
+  <text x="232.5" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827">Fraud Caught</text>
+  <text x="487.5" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827">Fraud Missed</text>
+</svg>

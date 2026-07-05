@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Review Queue</title>
+  <style>
+    :root {
+      --bg: #f4f6fa;
+      --panel: #ffffff;
+      --line: #d9e2ef;
+      --text: #111827;
+      --muted: #64748b;
+      --green: #15803d;
+      --red: #b91c1c;
+      --blue: #2563eb;
+      --amber: #b45309;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 24px 28px 10px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    main { padding: 18px 28px 30px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .card, section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .card { padding: 18px; }
+    .label { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+    .value { font-size: 34px; font-weight: 700; line-height: 1; }
+    .green { color: var(--green); }
+    .red { color: var(--red); }
+    .blue { color: var(--blue); }
+    .summary {
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #14532d;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    section { padding: 18px; }
+    .chart img {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .confidence-row {
+      display: grid;
+      grid-template-columns: 92px 1fr 58px;
+      gap: 10px;
+      align-items: center;
+      margin: 13px 0;
+    }
+    .bar-track {
+      height: 14px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+    .bar-fill { height: 100%; border-radius: 999px; }
+    .high { background: var(--green); }
+    .medium { background: var(--amber); }
+    .low { background: var(--red); }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    th {
+      background: #eef3f8;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    .pill {
+      display: inline-block;
+      min-width: 74px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .pill-fraud { background: #fee2e2; color: var(--red); }
+    .pill-legit { background: #dcfce7; color: var(--green); }
+    .reason { color: #334155; max-width: 280px; }
+
+    @media (max-width: 820px) {
+      header, main { padding-left: 16px; padding-right: 16px; }
+      .grid, .two-col { grid-template-columns: 1fr; }
+      .value { font-size: 30px; }
+      .summary { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fraud Review Queue</h1>
+    <p class="muted">A plain-English analyst view of which transactions deserve attention first.</p>
+  </header>
+
+  <main>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Fraud Caught</div>
+        <div class="value green" id="fraud-caught">-</div>
+      </div>
+      <div class="card">
+        <div class="label">Fraud Missed</div>
+        <div class="value red" id="fraud-missed">-</div>
+      </div>
+      <div class="card">
+        <div class="label">Transactions Reviewed</div>
+        <div class="value blue" id="transactions-reviewed">-</div>
+      </div>
+    </div>
+
+    <div class="summary card" id="summary-sentence">
+      Run <code>python -m src.simple_report</code> to generate the review queue.
+    </div>
+
+    <div class="two-col">
+      <section class="chart">
+        <h2>Fraud Caught vs Fraud Missed</h2>
+        <img src="outputs/fraud_caught_missed.svg" alt="Bar chart showing fraud caught versus fraud missed" />
+      </section>
+
+      <section>
+        <h2>Confidence Meter</h2>
+        <div class="confidence-row">
+          <strong>High</strong>
+          <div class="bar-track"><div class="bar-fill high" id="high-bar"></div></div>
+          <span id="high-count">-</span>
+        </div>
+        <div class="confidence-row">
+          <strong>Medium</strong>
+          <div class="bar-track"><div class="bar-fill medium" id="medium-bar"></div></div>
+          <span id="medium-count">-</span>
+        </div>
+        <div class="confidence-row">
+          <strong>Low</strong>
+          <div class="bar-track"><div class="bar-fill low" id="low-bar"></div></div>
+          <span id="low-count">-</span>
+        </div>
+        <p class="muted">Shows how strongly the model stood behind its decisions.</p>
+      </section>
+    </div>
+
+    <section>
+      <h2>Top 20 Suspicious Transactions</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Transaction ID</th>
+              <th>Actual Fraud?</th>
+              <th>Model Prediction</th>
+              <th>Confidence</th>
+              <th>Amount</th>
+              <th>Reason Flagged</th>
+            </tr>
+          </thead>
+          <tbody id="review-queue">
+            <tr>
+              <td colspan="7" class="muted">Run <code>python -m src.simple_report</code> to generate the review queue.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function setBar(id, count, total) {
+      const percent = total ? Math.max(3, (count / total) * 100) : 0;
+      document.getElementById(id).style.width = `${percent}%`;
+    }
+
+    function predictionPill(value) {
+      const span = document.createElement('span');
+      span.className = value === 'Yes' || value === 'Fraud' ? 'pill pill-fraud' : 'pill pill-legit';
+      span.textContent = value;
+      return span;
+    }
+
+    async function loadDashboard() {
+      const response = await fetch('outputs/review_queue.json');
+      if (!response.ok) return;
+      const data = await response.json();
+
+      document.getElementById('fraud-caught').textContent = formatNumber(data.cards.fraud_caught);
+      document.getElementById('fraud-missed').textContent = formatNumber(data.cards.fraud_missed);
+      document.getElementById('transactions-reviewed').textContent = formatNumber(data.cards.transactions_reviewed);
+      document.getElementById('summary-sentence').textContent = data.summary.sentence;
+
+      const confidence = data.confidence;
+      const total = confidence.high + confidence.medium + confidence.low;
+      document.getElementById('high-count').textContent = formatNumber(confidence.high);
+      document.getElementById('medium-count').textContent = formatNumber(confidence.medium);
+      document.getElementById('low-count').textContent = formatNumber(confidence.low);
+      setBar('high-bar', confidence.high, total);
+      setBar('medium-bar', confidence.medium, total);
+      setBar('low-bar', confidence.low, total);
+
+      const body = document.getElementById('review-queue');
+      body.innerHTML = '';
+      data.top_suspicious.forEach((row, index) => {
+        const tr = document.createElement('tr');
+        const cells = [
+          index + 1,
+          row.transaction_id,
+          row.actual_fraud,
+          row.model_prediction,
+          `${row.confidence}%`,
+          `$${Number(row.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+          row.reason,
+        ];
+
+        cells.forEach((cell, cellIndex) => {
+          const td = document.createElement('td');
+          if (cellIndex === 2 || cellIndex === 3) {
+            td.appendChild(predictionPill(cell));
+          } else {
+            td.textContent = cell;
+            if (cellIndex === 6) td.className = 'reason';
+          }
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>
