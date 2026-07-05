@@ -1,6 +1,0 @@
-{
-  "total_fraud": 280,
-  "fraud_caught": 276,
-  "fraud_missed": 4,
-  "sentence": "Out of 280 fraudulent transactions in the provided dataset, the model correctly caught 276 of them."
-}

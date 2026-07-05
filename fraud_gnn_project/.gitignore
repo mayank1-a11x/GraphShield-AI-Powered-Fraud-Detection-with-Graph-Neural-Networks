@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+
+.venv/
+venv/
+.env
+
+checkpoints/
+notebooks/.ipynb_checkpoints/
+
+outputs/prediction_results.csv
+outputs/simple_summary.json
+outputs/graph_summary.json
+outputs/model_comparison.svg
+outputs/transaction_graph.svg
+outputs/results.json
